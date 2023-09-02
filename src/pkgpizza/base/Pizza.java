@@ -5,16 +5,23 @@ import java.util.List;
 
 public class Pizza {
     private String name;
-    private double price;
-    private List<Topping>toppings = new ArrayList<>();
+    private double precioBase;
+    private double precioIngredienteExtra;
+    private List<String> toppings;
 
-    public Pizza (String name,double price,Topping... toopings){
-        this.name=name;
-        this.price=price;
-        for (Topping tp : toopings){
-            this.toppings.add(tp);
-        }
+    public Pizza(String name, double precioBase, double precioIngredienteExtra) {
+        this.name = name;
+        this.precioBase = precioBase;
+        this.precioIngredienteExtra = precioIngredienteExtra;
+        this.toppings = new ArrayList<>();
     }
 
-    public void addTopping
+    public void addTopping(String topping) {
+        this.toppings.add(topping);
+    }
+
+    public double calcularPrecio() {
+        return this.precioBase + (this.toppings.size() * this.precioIngredienteExtra);
+    }
+
 }
